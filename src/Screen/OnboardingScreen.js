@@ -1,0 +1,201 @@
+import React from 'react';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
+
+const { width, height } = Dimensions.get('window');
+
+const OnboardingScreen1 = () => (
+  <LinearGradient
+    colors={['#1074FD', '#0D38CF']} 
+    start={{ x: 0, y: 0 }} // Top-left
+    end={{ x: 0, y: 1 }} // Bottom-left
+    style={styles.gradient1}
+    >
+    <View style={styles.screen}>
+    <View >
+      <Image style={styles.skip} source={require("../assets/skip.png")}/>
+    <View style={{width:250, marginRight:100, marginTop: 5 }}>
+    <Text style={[styles.title, {fontWeight: 800, fontSize: 40, lineHeight:43, letterSpacing: 0.5 }]}>Shop, Deliver & Discover</Text>
+    </View>
+    <View style={{width:275, top: -5, left: 7}}>
+    <Text style={[styles.description, {fontSize:18, weight: 400, lineHeight: 24, letterSpacing: 0.5}]}>
+      Find amazing deals, stores, hotels, restaurants, and services in your area.
+    </Text>
+    </View>
+    </View>
+    <View style={{flex:1, justifyContent: 'center', alignItems: 'center', padding:20}}>
+      <View style={{position: 'relative'}}>
+       <Image source={require('../assets/onboard1/shopping.png')} style={styles.shopping} />
+      </View>
+      <View style={{ bottom:450, zIndex:10, right:150}}>
+      <Image style ={{paddingBottom:10}}
+         source={require('../assets/onboard1/goldspline.png')}/>
+      </View>
+     
+      <View style={{
+         position:'absolute',
+         bottom:400,
+         right:100,
+         backgroundColor: '#f5f5f5',
+         }}>
+         <Image source={require('../assets/onboard1/bag.png')} style={styles.bag}/> 
+      </View>
+    </View>
+  
+      <View style={styles.swipe}>
+         <Image source={require('../assets/swipeleft.png')}/>
+      </View>
+  </View>
+  </LinearGradient>
+ 
+);
+
+const OnboardingScreen2 = () => (
+  
+  <View style={[styles.screen, {backgroundColor: "#191045"}]}>  
+    <View style={{position: 'relative'}}>
+    <View style={{position:"absolute", top:-70, left:14}}>
+       <Image style={styles.skip} source={require("../assets/skip.png")}/>
+       </View>
+    <Image source={require('../assets/onboard2/gift.png')} style={styles.image2} />
+        <View style={{ position:"absolute", bottom: -250 ,left: 180, transform: [{ rotate: '2.38deg' }], }}>
+       <Image source={require('../assets/onboard2/bluespline2.png')}/>
+    </View>
+    </View>
+    <View style={{width: 315, height: 86, top: -50, left: 7}}>
+    <Text style={{fontWeight: 800, fontSize: 40, lineHeight: 43, letterSpacing: 0.5, color: "#fff"}}>Send & Receive Packages</Text>
+    </View>
+     <View style={{width:267, height:60, top: -50, left: -25}}>
+     <Text style={[styles.description, {fontWeight: 400, fontSize: 17, lineHeight: 22.4}]}>The best way to send and receive your packages at affordable prices.
+    </Text>
+     </View>
+     <View style={[styles.swipe, {width:158, height:41.82, top:-20}]}>
+         <Image source={require('../assets/swipeleft.png')}/>
+      </View>
+  
+
+    
+  </View>
+);
+
+const OnboardingScreen3 = () => {
+  const navigation = useNavigation();
+
+  return (
+    <View style={[styles.screen, { backgroundColor: '#F2F4F7'}]}>
+      <View style={{flex:1, alignContent: 'center', top: 80}}>
+         <View style={{maxWidthwidth:300, maxHeight: 80, top: 9, left:7}}>
+         <Text style={{fontWeight: 800, fontSize: 40, lineHeight:43, letterSpacing:0.5}}>Make Money as a Runner</Text>
+         </View>
+          <View style={{width:265, height: 98, top: 22, left: 7}}>  
+           <Text style={{fontWeight: 400, fontSize: 16 ,lineHeight: 22.4}}>
+             Whether you're full-time or part-time, turn your time and resources into earnings.
+      </Text>
+          </View>
+      </View>
+      <View style={{ flex:1, alignItems: 'center', justifyContent: 'center', top: -40, position: 'relative'}}>
+      <Image source={require('../assets/onboard3/cyclist.png')} style={styles.image3} />
+
+      <View style={{position:"absolute", bottom: 545 ,left: 200, transform: [{ rotate: '2.38deg' }]}}>
+        <Image source={require('../assets/onboard3/bluespline.png')}/>
+      </View>
+      </View>
+      <TouchableOpacity
+        // style={styles.getStartedButton}
+        onPress={() => navigation.navigate('Layout')} >
+  
+        <View style={{margin: 50}} >
+           <Image style={{width: 320, height: 75, top: -40, left:18, borderRadius: 46.47}} source={require("../assets/onboard3/getstarted.png")}/>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const OnboardingScreen = () => {
+  const screens = [<OnboardingScreen1 key="1" />, <OnboardingScreen2 key="2" />, <OnboardingScreen3 key="3" />];
+
+  return (
+    <FlatList
+      data={screens}
+      renderItem={({ item }) => item}
+      horizontal
+      pagingEnabled
+      contentContainerStyle={{height: height * 1}}
+      showsHorizontalScrollIndicator={false}
+      keyExtractor={(item, index) => index.toString()}
+    />
+  );
+};
+
+export default OnboardingScreen;
+
+const styles = StyleSheet.create({
+  gradient1: {
+    flex: 1,
+  },
+  screen: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    width: width,
+    height:height
+  },
+  shopping: {
+    width: 389.42,
+    height: 500,
+    resizeMode: 'contain',
+    left: -30,
+    top:-10,
+    zIndex: 1,
+
+  },
+  swipe: {
+    width: 158,
+    height: 41.82,
+    top: -70,
+    paddingTop: -10,
+    paddingRight: 30.21,
+   
+  },
+  skip: {
+   width: 75,
+   height: 42,
+   top: 25,
+   left: 287,
+
+
+  },
+  bag: {
+    position: 'absolute', 
+    zIndex: 100,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
+    marginTop: 20,
+  },
+  description: {
+    fontSize: 16,
+    color: '#fff',
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  getStartedButton: {
+    marginTop: 20,
+    backgroundColor: '#007BFF',
+    padding: 15,
+    borderRadius: 8,
+  },
+  getStartedText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
+
+
