@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     width: '100%',
-    height: height * 0.55,
+    height: height * 0.58,
     position: 'absolute',
     bottom:0,
-    top:135
+    top:135,
+    
     
   },
  

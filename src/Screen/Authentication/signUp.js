@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import FormField from '../../components/FormField';
+import PasswordValidation from '../../components/PasswordValidate';
 
 const {width, height} = Dimensions.get("window")
 
 
 const SignUpScreen = () => {
+   const [password, setPassword] = useState("");
     const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     phoneNumber: "",
     dateOfBirth:"",
-    password:"",
+    password:password,
     confirmPassword: ""
-   })
+   });
 
   return (
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
@@ -83,15 +85,13 @@ const SignUpScreen = () => {
       <FormField
         label="Password"
         placeholder="*******"
-        value={form.password}
-        onChangeText={(e) => setForm({
-          ...form,
-          password: e
-        })}
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry
         icon={require('../../assets/signUp/shield.png')}
       />
-        <View style={styles.passwordAuthContainer}>
+           <PasswordValidation password={password} />
+        {/* <View style={styles.passwordAuthContainer}>
             <View style={styles.authTextContainer}>
             <Text style={[styles.authText]}>8 character or more</Text>
             </View>
@@ -105,7 +105,7 @@ const SignUpScreen = () => {
              <Text>Upper case</Text>
              </View>
            
-        </View>
+        </View> */}
       <FormField
         label="Confirm Password"
         placeholder="*******"
@@ -254,183 +254,3 @@ const styles = StyleSheet.create({
 });
 
 export default SignUpScreen;
-
-
-
-
-
-// import { View, Text, Image, Alert, TouchableOpacity, StyleSheet, Dimensions } from 'react-native'
-// import React, { useState } from 'react'
-// import { useNavigation } from '@react-navigation/native'
-// import FormField from '../../components/FormField';
-
-// const {width, height} = Dimensions.get("window")
-
-// const signUp = () => {
-//   const navigation = useNavigation(); 
-
-//    const [form, setForm] = useState({
-//     firstName: "",
-//     lastName: "",
-//     phoneNumber: "",
-//     dateOfBirth:"",
-//     password:"",
-//     confirmPassword: ""
-//    })
-
-//    const [isSubmitting, setIsSubmitting] = useState(false)
-
-
-//    const submit = async() => {
-//     if (form.firstName === "" || form.lastName=== "" || form.phoneNumber=== "" || form.dateOfBirth=== "" || form.password==="", form.confirmPassword==="") {
-//       Alert.alert("Error", "Please fill in all the fields")
-//     }
-//     setIsSubmitting(true)
-
-//    }
-//   return (
-//     <View style={styles.screen}>
-//         {/* Sign Up Message */}
-//        <View style={styles.signUpContainer}>
-//            <View style={styles.headerTextContainer}>
-//            <Text style={styles.headerText}>Sign Up</Text>
-//            </View>
-//             <View style={styles.textContainer}>
-//             <Text style={styles.text}>Lorem ipsum dolornsit amet connecteur.Telius id quam</Text>
-//             </View>
-//             <TouchableOpacity>
-//             <View style={styles.iconContainer}>
-//             <Image source={require("../../assets/signUp/close.png")}
-//             style={styles.close}
-//               />
-//              </View>
-//             </TouchableOpacity>
-          
-//        </View >
-//          {/* Personal details */}
-//        <View style={[styles.detailsContainer,{height : height * 0.6}]}>
-//              <View style={styles.personalDetailsContainer}>
-//              <Text style={styles.personalDetails}> PERSONAL DETAILS</Text>
-//              </View>
-            
-//             <FormField
-//               title="First name"
-//               value={form.firstName}
-//               handleChangeText={(e) => setForm({...form, firstName: e })}
-//             />
-//             <FormField
-//               title="Last name"
-//               value={form.lastName}
-//               handleChangeText={(e) => setForm({...form, lastName: e })}
-//             />
-//             <FormField
-//               title="Phone number"
-//               value={form.phoneNumber}
-//               handleChangeText={(e) => setForm({...form, phoneNumber: e })}
-//             />
-//             <FormField
-//               title="Date of Birth"
-//               value={form.firstName}
-//               handleChangeText={(e) => setForm({...form, firstName: e })}
-//             />
-//               <View> 
-//                  <Text> SECURITY</Text>
-//             <FormField
-//              title="Password"
-//              value={form.password}
-//              handleChangeText={(e) => setForm({...form, password: e})}
-//              otherStyles="mt-7"
-           
-//            />
-//             <FormField
-//              title="Confirm Password"
-//              value={form.confirmPassword}
-//              handleChangeText={(e) => setForm({...form, confirmPassword: e})}
-//              otherStyles="mt-7"
-           
-//            />
-           
-//               </View>
-//        </View>
-//        {/* Sign Up Button */}
-//        <View style={{height: height * 0.2}}>
-//        <TouchableOpacity>
-//             <Text> Sign up(1/3)</Text>
-//         </TouchableOpacity>
-//        </View>
-//        {/* footer */}
-//          <View>
-//             <Text> By signing up, i agree to CrowdCargo <Text style={styles.policy}>
-//             Terms of Service, Safety Policy
-//               </Text> and <Text style={styles.policy}>Privacy Policy</Text></Text>
-//          </View>
-//     </View>
-//   )
-// }
-
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex:1,
-//     backgroundColor: "#F7F7F7"
-//   },
-//   signUpContainer: {
-//     height: height * 0.2,
-//     marginTop: 12,
-//     maxWidthwidth: 390,
-//     padding:14,
-//     position: 'relative'
-//   }, 
-//   headerTextContainer:{
-//     width: 294,
-//     height: 40,
-//     marginTop: 40
-//   },
-//   headerText:{
-//     color: '#212121',
-//     fontWeight: 800,
-//     fontSize:32,
-//     lineHeight:39.84
-//   },
-//   textContainer:{
-//     width:300,
-//     height: 59
-//   },
-//   text: {
-//     fontWeight: 400,
-//     fontSize: 16,
-//     lineHeight: 23
-//   },
-//   iconContainer:{
-//      position: 'absolute',
-//      top:-90,
-//      left:350
-
-//   },
-//   close: {
-//     width: 20,
-//     height:20
-//   },
-//   detailsContainer: {
-//     width: 348,
-//     height: 560,
-//     // top: 230,
-//     left:21,
-//     gap:7
-//   },
-//   personalDetailsContainer:{
-//     width: 348,
-//     height:23
-//   },
-//   personalDetails: {
-//     fontWeight:800,
-//     fontSize: 10,
-//     lineHeight: 23,
-//     color:"#21212180"
-
-//   }
-
-
-
-// })
-
-// export default signUp
