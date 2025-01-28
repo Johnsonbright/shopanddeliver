@@ -18,6 +18,9 @@ const Layout = () => {
     <View style={styles.screen}>
       {/* Top Section */}
       <View style={styles.iconSection}>
+          <View style={{top:-90, right:120}}>
+             <Image source={require("../assets/layout/spiral.png")} />
+          </View>
         <Image
           source={require('../assets/layout/iconlayout.png')}
           style={styles.iconImage}

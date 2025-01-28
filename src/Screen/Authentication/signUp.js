@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import FormField from '../../components/FormField';
 import PasswordValidation from '../../components/PasswordValidate';
+import { useNavigation } from '@react-navigation/native';
 
 const {width, height} = Dimensions.get("window")
 
 
 const SignUpScreen = () => {
+   const navigation = useNavigation()
+
    const [password, setPassword] = useState("");
     const [form, setForm] = useState({
     firstName: "",
@@ -26,7 +29,9 @@ const SignUpScreen = () => {
          <Text style={styles.subtitle}>Lorem ipsum dolor sit amet consectetur. Tellus id quam.</Text>
         
        
-       <TouchableOpacity>
+       <TouchableOpacity
+          onPress={() => navigation.goBack("Layout")}
+       >
          <View style={styles.iconContainer}>
           <Image source={require("../../assets/signUp/close.png")}
            style={styles.close}
