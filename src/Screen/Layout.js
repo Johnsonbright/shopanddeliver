@@ -170,8 +170,6 @@ const styles = StyleSheet.create({
     width: 533.81,
     height: 50,
     zIndex:100,
-    // borderRadius:0.26,
-    // left:-18,
     bottom:-20,
     transform:[{rotate: '0deg'}]
    
@@ -181,78 +179,3 @@ const styles = StyleSheet.create({
 export default Layout;
 
 
-// import { View, Text, Dimensions, StyleSheet, Image, ImageBackground, TouchableOpacity, Button } from 'react-native'
-// import React from 'react'
-// import { useNavigation } from '@react-navigation/native'
-
-// const {width, height} = Dimensions.get("window")
-
-// const Layout = () => {
-//   return (
-//     <View style={[styles.screen, {backgroundColor: "#191045"}]}>
-//         <View style={styles.icon}>
-//            <Image source={require("../assets/layout/iconlayout.png")}/>
-//             <View></View>
-//         </View>
-//           <View style={{position: 'relative'}}>
-//           <ImageBackground source={require("../assets/layout/rect.png")}
-//               style={styles.backgroundImage}
-//               resizeMode='cover'
-//          />
-//            <View style={styles.overlay}>
-//             <Image source={require("../assets/layout/attachRect.png")} />
-//            </View>
-//             <View> 
-//               <TouchableOpacity>
-//                  <View  style={styles.signContainer}>
-//                      <Text>Sign Up</Text>
-//                  </View>
-//               </TouchableOpacity>
-             
-//             </View>
-//           </View>
-         
-//     </View>
-//   )
-// }
-
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     // alignItems: 'center',
-//     // justifyContent: 'center',
-//     // padding: 20,
-//     // width: width,
-//     // height:height
-//   },
-//   icon: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//      padding: 20,
-//      top: -250
-//   },
-//   backgroundImage: {
-//     width: '100%',
-//     height: height * 0.55, // Take 55% of the screen height
-//     position: 'absolute',
-//     bottom: 0, // Position it from the bottom up
-    
-//   },
-//   overlay: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems:"center",
-//     top:-440
-//   },
-//   // signContainer: {
-//   //   width: 351,
-//   //   height: 219,
-//   //   top: -206,
-//   //   // left:20,
-//   //   // gap: 26
-//   // }
-  
-// })
-
-// export default Layout
