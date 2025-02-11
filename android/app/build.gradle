@@ -110,10 +110,18 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation project(':react-native-splash-screen')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
+    }
+}
+
+// Force AndroidX core to resolve potential duplicate class issues
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.core:core:1.13.1'
     }
 }
