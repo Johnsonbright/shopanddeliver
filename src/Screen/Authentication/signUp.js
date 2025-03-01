@@ -1,3 +1,142 @@
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import FormField from '../../components/FormField';
+import PasswordValidation from '../../components/PasswordValidate';
+import { useNavigation } from '@react-navigation/native';
+
+const {width, height} = Dimensions.get("window")
+
+const signUp = () => {
+  const navigation = useNavigation()
+
+      const [form, setForm] = useState({
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      dateOfBirth:"",
+      password: "",
+      confirmPassword: ""
+     });
+
+     // Update password directly in form state
+   const handlePasswordChange = (newPassword) => {
+  setForm({ ...form, password: newPassword });
+   };
+  
+  return (
+   <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+      <View style={styles.headerContainer}>
+        <View style={styles.titleContainer}>
+           <Text style={styles.title}>Sign Up</Text>
+           <Text style={styles.subtitle}> Lorem ipsum dolor sit amet consectetur. Tellus id quam</Text>
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Layout")}
+            >
+              <View style={styles.closeContainer}>
+                <Image source={require("../../assets/signUp/close.png")}
+                style={styles.close}
+                />
+                  </View>
+            </TouchableOpacity>
+        </View>
+      </View>
+
+      <Text style={styles.sectionTitle}>PERSONAL DETAILS</Text>
+      {/* <FormField/> */}
+       {/* <FormField
+        label="First name"
+        placeholder="Nonye"
+        value={form.firstName}
+        onChangeText={(e) => 
+          setForm({
+            ...form,
+            firstName:e
+          })
+        }
+        // icon={require('../../assets/signUp/profile.png')}
+      /> */}
+     
+    </ScrollView>
+  )
+}
+
+export default signUp
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+  },
+  headerContainer: {
+    height: height * 0.15,
+    marginTop: 12,
+    maxWidth: 390, // Fixed typo
+    padding: 14,
+    position: 'relative',
+  },
+  titleContainer: {
+    width: 294,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#000',
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#7A7A7A',
+    marginBottom: 20,
+  },
+  closeContainer: {
+    position: "absolute",
+    bottom: 70,
+    left: 320,
+  },
+  close: {
+    width: 20,
+    height: 20,
+  },
+  sectionTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#7A7A7A',
+    marginVertical: 10,
+  },
+  footerContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 19,
+    marginBottom: 10,
+    width: 350,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 50,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  footerText: {
+    fontSize: 12,
+    color: '#7A7A7A',
+    textAlign: 'center',
+    padding: 20,
+  },
+  link: {
+    color: '#007BFF',
+    textDecorationLine: 'underline',
+  },
+})
+
+
 // import React, {useState} from 'react';
 // import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 // import FormField from '../../components/FormField';
@@ -260,17 +399,4 @@
 
 // export default SignUpScreen;
 
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 
-const signUp = () => {
-  return (
-    <View>
-      <Text>signUp</Text>
-    </View>
-  )
-}
-
-export default signUp
-
-const styles = StyleSheet.create({})
