@@ -221,7 +221,7 @@ const OnboardingScreen3 = () => {
               letterSpacing: 0.5,
             }}
           >
-            Make Money as a Runner
+            Make Money as a Runner ₦
           </Text>
         </View>
         <View style={{ width: 265, height: 98, top: 22, left: 7 }}>
